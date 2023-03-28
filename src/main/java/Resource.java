@@ -30,4 +30,18 @@ class Resource {
         spaces.release();
     }
 
+    void increment(String threadName) {
+        try {
+            spaces.acquire();
+            mutex.acquire();
+        } catch (InterruptedException ex) {
+            ex.printStackTrace();
+        }
+
+        this.countOfItems++;
+        System.out.printf("%s produced item: %d\n", threadName, this.countOfItems);
+
+        mutex.release();
+        items.release();
+    }
 }
