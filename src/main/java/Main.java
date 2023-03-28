@@ -1,12 +1,10 @@
-import java.util.concurrent.Semaphore;
-
 public class Main {
-    public static void main(String[] args) {
-        Semaphore sem = new Semaphore(5);
-        Producer producer = new Producer(sem, "producer");
-        Consumer consumer = new Consumer(sem, "consumer");
+    public static void main(String[] args) throws InterruptedException {
+        Resource resource = new Resource(5);
+        Thread producer = new Producer(resource, "Producer");
+        Thread consumer = new Consumer(resource, "Consumer");
 
-        producer.start();
-        consumer.start();
+        producer.join();
+        consumer.join();
     }
 }
