@@ -9,4 +9,5 @@
 #### Steps (Linux terminal commands)
 
 1. `git clone https://github.com/abmkrtchyan/ProducerConsumerProblem.git`
-2. `cd ProducerConsumerProblem && mvn clean install`
+2. `cd ProducerConsumerProblem` 
+3. `mvn clean install`
