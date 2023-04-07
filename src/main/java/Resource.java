@@ -24,7 +24,7 @@ class Resource {
         }
 
         this.countOfItems--;
-        System.out.printf("%s consumed item: %d\n", threadName, this.countOfItems);
+        Main.log.info(String.format("%s consumed item: %d", threadName, this.countOfItems));
 
         mutex.release();
         spaces.release();
@@ -39,7 +39,7 @@ class Resource {
         }
 
         this.countOfItems++;
-        System.out.printf("%s produced item: %d\n", threadName, this.countOfItems);
+        Main.log.info(String.format("%s produced item: %d", threadName, this.countOfItems));
 
         mutex.release();
         items.release();
