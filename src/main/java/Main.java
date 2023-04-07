@@ -1,7 +1,7 @@
-import java.io.File;
-
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+
+import java.io.File;
 
 public class Main {
     public static final String ROOT_DIR = System.getProperty("user.dir");
