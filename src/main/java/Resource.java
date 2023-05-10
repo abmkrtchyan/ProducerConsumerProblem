@@ -15,6 +15,10 @@ class Resource {
 
     void decrement(String threadName) {
         try {
+            {
+                if (spaces.availablePermits() == 5)
+                    Main.log.info(String.format("%s is waiting to consume the item. Available spaces: %d", threadName, spaces.availablePermits()));
+            }
             items.acquire();
             mutex.acquire();
         } catch (InterruptedException ex) {
@@ -30,8 +34,11 @@ class Resource {
 
     void increment(String threadName) {
         try {
+            {
+                if (spaces.availablePermits() == 0)
+                    Main.log.info(String.format("%s is waiting to produce the item. Available spaces: %d", threadName, spaces.availablePermits()));
+            }
             spaces.acquire();
-            Main.log.info(String.format("%s is waiting to produce item. Available spaces: %d", threadName, spaces.availablePermits()));
             mutex.acquire();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
