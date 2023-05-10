@@ -9,7 +9,7 @@
 #### Build steps (Linux terminal commands)
 
 ``` bash
-1. git clone https://github.com/abmkrtchyan/ProducerConsumerProblem.git`
+1. git clone https://github.com/abmkrtchyan/ProducerConsumerProblem.git
 2. cd ProducerConsumerProblem 
 3. mvn clean compile assembly:single
 ```
