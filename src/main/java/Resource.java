@@ -2,7 +2,6 @@ import java.util.concurrent.Semaphore;
 
 class Resource {
     long countOfItems;
-    long capacity;
     static Semaphore items;
     static Semaphore spaces;
     static Semaphore mutex;
@@ -11,7 +10,6 @@ class Resource {
         Resource.items = new Semaphore(0);
         Resource.spaces = new Semaphore(capacity);
         Resource.mutex = new Semaphore(1);
-        this.capacity = capacity;
         this.countOfItems = 0;
     }
 
@@ -33,6 +31,7 @@ class Resource {
     void increment(String threadName) {
         try {
             spaces.acquire();
+            Main.log.info(String.format("%s is waiting to produce item. Available spaces: %d", threadName, spaces.availablePermits()));
             mutex.acquire();
         } catch (InterruptedException ex) {
             ex.printStackTrace();
